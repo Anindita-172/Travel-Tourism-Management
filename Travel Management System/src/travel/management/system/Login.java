@@ -34,7 +34,7 @@ public class Login extends JFrame {
         
         JLabel lblusername = new JLabel("Username: ");
 	lblusername.setBounds(60,20,100,25);
-        lblusername.setFont(new Font("SAN_SERIF", Font.PLAIN, 18));
+        lblusername.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
 	p2.add(lblusername);
 
         JTextField tfusername = new JTextField();
@@ -44,7 +44,7 @@ public class Login extends JFrame {
         
         JLabel lbpassword = new JLabel("Password: ");
 	lbpassword.setBounds(60,110,100,25);
-        lbpassword.setFont(new Font("SAN_SERIF", Font.PLAIN, 18));
+        lbpassword.setFont(new Font("SAN_SERIF", Font.PLAIN, 16));
 	p2.add(lbpassword);
 
         JTextField tfpassword = new JTextField();
