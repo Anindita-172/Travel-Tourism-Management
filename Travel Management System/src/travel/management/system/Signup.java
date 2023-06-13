@@ -29,7 +29,7 @@ public class Signup extends JFrame{
      tfusername.setBounds(190,20,180,25);
      p1.add(tfusername);
 	
-      JLabel lblname = new JLabel("Name :");
+        JLabel lblname = new JLabel("Name :");
 	lblname.setForeground(Color.DARK_GRAY);
 	lblname.setFont(new Font("Tahoma", Font.BOLD, 14));
 	lblname.setBounds(50,60,125,25);
@@ -42,7 +42,7 @@ public class Signup extends JFrame{
      
       JLabel lblPassword = new JLabel("Password :");
 	lblPassword.setForeground(Color.DARK_GRAY);
-	lblPassword.setFont(new Font("Tahoma", Font.BOLD, 14));
+	lblPassword.setFont(new Font("Tahoma", Font.BOLD, 18));
 	lblPassword.setBounds(50,100,125,25);
 	p1.add(lblPassword);
      
@@ -53,7 +53,7 @@ public class Signup extends JFrame{
      
       JLabel lblsecurity = new JLabel("Security Question :");
 	lblsecurity.setForeground(Color.DARK_GRAY);
-	lblsecurity.setFont(new Font("Tahoma", Font.BOLD, 14));
+	lblsecurity.setFont(new Font("Tahoma", Font.BOLD, 18));
 	lblsecurity.setBounds(50,140,125,25);
 	p1.add(lblsecurity);
      
