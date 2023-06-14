@@ -4,8 +4,12 @@ package travel.management.system;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
+import java.awt.event.*;
 
-public class Signup extends JFrame{
+public class Signup extends JFrame implements ActionListener{
+    JButton create,back;
+    JTextField tfusername,tfname ,tfppassword,tfanswer;
+            Choice security;
     Signup()
     {
      setBounds(350,200,900,360);
@@ -24,7 +28,7 @@ public class Signup extends JFrame{
 	lblUsername.setBounds(50,20,125,25);
 	p1.add(lblUsername);
      
-     JTextField tfusername = new JTextField();
+     tfusername = new JTextField();
      tfusername.setBorder(BorderFactory.createEmptyBorder());
      tfusername.setBounds(190,20,180,25);
      p1.add(tfusername);
@@ -35,7 +39,7 @@ public class Signup extends JFrame{
 	lblname.setBounds(50,60,125,25);
 	p1.add(lblname);
      
-     JTextField tfname = new JTextField();
+     tfname = new JTextField();
     tfname.setBorder(BorderFactory.createEmptyBorder());
      tfname.setBounds(190,60,180,25);
      p1.add(tfname);
@@ -46,7 +50,7 @@ public class Signup extends JFrame{
 	lblPassword.setBounds(50,100,125,25);
 	p1.add(lblPassword);
      
-     JTextField tfppassword = new JTextField();
+     tfppassword = new JTextField();
      tfppassword.setBorder(BorderFactory.createEmptyBorder());
      tfppassword.setBounds(190,100,180,25);
      p1.add(tfppassword);
@@ -57,7 +61,7 @@ public class Signup extends JFrame{
 	lblsecurity.setBounds(50,140,125,25);
 	p1.add(lblsecurity);
      
-        Choice security = new Choice();
+        security = new Choice();
         security.add("Fav Character");
         security.add("Best Friend");
         security.add("First School");
@@ -72,25 +76,27 @@ public class Signup extends JFrame{
 	lblanswer.setBounds(50,180,125,25);
 	p1.add(lblanswer);
      
-     JTextField tfanswer = new JTextField();
+     tfanswer = new JTextField();
      tfanswer.setBorder(BorderFactory.createEmptyBorder());
      tfanswer.setBounds(190,180,180,25);
      p1.add(tfanswer);
 
        
-        JButton create = new JButton("Create");
+        create = new JButton("Create");
 	create.setBounds(80,250,100,30);
         create.setForeground(new Color(133,193,233));
 	create.setBackground(Color.WHITE);
         create.setFont(new Font("Tahoma", Font.BOLD, 14));
         create.setBorder(new LineBorder(new Color(133,193,233)));
-	p1.add(create);
+	create.addActionListener(this);
+        p1.add(create);
         
-        JButton back = new JButton("Back");
+        back = new JButton("Back");
 	back.setBounds(250,250,100,30);
         back.setForeground(new Color(133,193,233));
 	back.setBackground(Color.WHITE);
         back.setBorder(new LineBorder(new Color(133,193,233)));
+        back.addActionListener(this);
 	p1.add(back);
          
          
@@ -102,6 +108,38 @@ public class Signup extends JFrame{
         add(image);
         setVisible(true);
     }
+    public void actionPerformed(ActionEvent ae){
+    
+    if(ae.getSource() == create)
+    {
+       String username= tfusername.getText();
+       String name= tfname .getText();
+       String password= tfppassword.getText();
+       String question= security.getSelectedItem();
+       String answer= tfanswer.getText();
+       
+       String query = "insert into account values ('"+username+"', '"+name+"', '"+password+"', '"+question+"', '"+answer+"')";
+    
+        try{
+            Conn c= new Conn();
+            c.s.executeUpdate(query);
+            
+            JOptionPane.showMessageDialog(null, "Account created succesfully");
+            setVisible(false);
+            new Login();
+       }catch(Exception e){
+                e.printStackTrace();
+        }
+    
+    
+    } else if (ae.getSource() == back)
+    {
+        new Login();
+      setVisible(false);
+    }
+    }
+    
+    
     public static void main(String[] args)
     {
       new Signup();
