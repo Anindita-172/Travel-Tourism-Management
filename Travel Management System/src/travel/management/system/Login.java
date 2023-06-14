@@ -3,9 +3,12 @@ package travel.management.system;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
-public class Login extends JFrame {
+import java.awt.event.*;
+public class Login extends JFrame implements ActionListener {
+   JButton login,signup;
     Login()
     {
+        
         setSize(900,400);
         setLocation(350,200);
         setLayout(null);
@@ -53,25 +56,39 @@ public class Login extends JFrame {
         p2.add(tfpassword);
         
         
-        JButton login = new JButton("Login");
+        login = new JButton("Login");
 	login.setBounds(60,200,130,30);
         login.setForeground(Color.WHITE);
 	login.setBackground(new Color(133,193,233));
         login.setBorder(new LineBorder(new Color(133,193,233)));
-	p2.add(login);
+	login.addActionListener(this);
+        p2.add(login);
         
         
-        JButton signup = new JButton("SignUp");
+        signup = new JButton("SignUp");
 	signup.setBounds(230,200,130,30);
         signup.setForeground(Color.WHITE);
 	signup.setBackground(new Color(133,193,233));
         signup.setBorder(new LineBorder(new Color(133,193,233)));
-	p2.add(signup);
+	signup.addActionListener(this);
+        p2.add(signup);
         
         setVisible(true);
         
         
         
+    }
+    public void actionPerformed(ActionEvent ae){
+    if(ae.getSource() == login)
+    {
+      
+    }
+    else if (ae.getSource() == signup)
+    {
+     new Signup();
+      setVisible(false);
+    }
+    
     }
     public static void main(String[] args) {
                 new Login();
