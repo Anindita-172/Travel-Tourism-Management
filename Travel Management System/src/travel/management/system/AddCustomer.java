@@ -6,13 +6,14 @@ import java.awt.Font;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.*;
-public class AddCustomer extends JFrame {
+import java.awt.event.*;
+public class AddCustomer extends JFrame implements ActionListener {
     JLabel labelusername,labelname;
     JComboBox comboid;
     JTextField tfnumber, tfcountry,tfaddress ,tfphone,tfemail;
     JRadioButton rmale,rfemale;
     JButton add,back;
-    AddCustomer()
+    AddCustomer(String username)
     {
       setBounds(450,200,850,550);
       setLayout(null);
@@ -110,14 +111,14 @@ public class AddCustomer extends JFrame {
 	add.setBounds(50,440,100,25);
         add.setForeground(Color.WHITE);
 	add.setBackground(Color.BLACK);
-        //add.addActionListener(this);
+        add.addActionListener(this);
         add(add);
         
         back = new JButton("Back");
 	back.setBounds(220,440,100,25);
         back.setForeground(Color.WHITE);
 	back.setBackground(Color.BLACK);
-        //add.addActionListener(this);
+        back.addActionListener(this);
         add(back);
         
         
@@ -140,6 +141,43 @@ public class AddCustomer extends JFrame {
                 e.printStackTrace();}
         
       setVisible(true);
+    }
+    
+    public void actionPerformed(ActionEvent ae)
+    {
+    if(ae.getSource() == add)
+    {
+         String username = labelusername.getText(); //username
+         String id = (String)comboid.getSelectedItem(); 
+         String number =  tfnumber.getText();
+	 String name =  labelname.getText();
+         String gender =  null;
+         if(rmale.isSelected()){ 
+            gender = "Male";
+                            }
+           else if(rfemale.isSelected()){ 
+            gender = "Female";
+                            }
+	 String country =  tfcountry.getText();
+	 String address=  tfaddress.getText();  //address
+         String phone =  tfphone.getText();
+         String email = tfemail.getText(); //email
+         
+         try{
+           Conn c = new Conn();
+           String query = "insert into customer values('"+username+"','"+id+"','"+number+"','"+name+"','"+gender+"','"+country+"','"+address+"','"+phone+"','"+email+"')";
+           c.s.executeUpdate(query);
+           JOptionPane.showMessageDialog(null, "Customer Added Successfully");
+           setVisible(false);
+         
+         }
+          catch(Exception e){ e.printStackTrace();}
+         
+    }
+    else {
+        new Dashboard("");
+        setVisible(false);}
+    
     }
     
     public static void main(String[] args)
