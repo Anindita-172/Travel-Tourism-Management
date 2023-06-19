@@ -90,8 +90,8 @@ public class ViewCustomer extends JFrame {
      labelphone.setBounds(350,230,150,25);
      add(labelphone);
      
-     back = new JButton("back");
-     back.setBackground(Color.BLACK);
+     back = new JButton("Back");
+     back.setBackground(Color.RED);
      back.setForeground(Color.WHITE);
      back.setBounds(350,350,100,25);
      add(back);
@@ -100,7 +100,7 @@ public class ViewCustomer extends JFrame {
         Image i2 = i1.getImage().getScaledInstance(400,500,Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
-        image.setBounds(20,400,600,200);
+        image.setBounds(22,400,600,200);
         add(image);
      
      setVisible(true);
