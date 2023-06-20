@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class Dashboard extends JFrame implements ActionListener{
     String username;
-    JButton addPersonalDetails,viewPersonDetails,updatePersonDetails;
+    JButton addPersonalDetails,viewPersonDetails,updatePersonDetails,checkPakage;
     Dashboard(String username)
     {this.username =username;
     
@@ -77,12 +77,13 @@ public class Dashboard extends JFrame implements ActionListener{
      deletePersonDetails.setMargin(new Insets(0,0,0,60));
      p2.add( deletePersonDetails); 
      
-     JButton checkPakage = new JButton("Check Pakage");
+     checkPakage = new JButton("Check Pakage");
      checkPakage.setBounds(0,200,300,50);
      checkPakage.setForeground(Color.WHITE);
      checkPakage.setBackground(new Color(0,0,102));
      checkPakage.setFont(new Font("Tahoma", Font.PLAIN, 20));
      checkPakage.setMargin(new Insets(0,0,0,130));
+     checkPakage.addActionListener(this);
      p2.add( checkPakage); 
      
      JButton bookPakage = new JButton("Book Pakage");
@@ -196,6 +197,9 @@ public class Dashboard extends JFrame implements ActionListener{
     }
     else if(ae.getSource()==  updatePersonDetails)
     { new  UpdateCustomer(username);
+    }
+    else if(ae.getSource()==  checkPakage)
+    { new  CheckPackage();
     }
     }
     
