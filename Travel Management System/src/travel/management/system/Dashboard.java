@@ -3,9 +3,11 @@ package travel.management.system;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 public class Dashboard extends JFrame implements ActionListener{
     String username;
-    JButton addPersonalDetails;
+    JButton addPersonalDetails,viewPersonDetails;
     Dashboard(String username)
     {this.username =username;
     
@@ -39,14 +41,14 @@ public class Dashboard extends JFrame implements ActionListener{
      p2.setBounds(0,65,300,900);
      add(p2);
      
-     addPersonDetails = new JButton("Add Personal Details");
-     addPersonDetails.setBounds(0,0,300,50);
-     addPersonDetails.setForeground(Color.WHITE);
-     addPersonDetails.setBackground(new Color(0,0,102));
-     addPersonDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
-     addPersonDetails.setMargin(new Insets(0,0,0,60));
-     addPersonDetails.addActionListener(this);
-     p2.add( addPersonDetails); 
+     addPersonalDetails = new JButton("Add Personal Details");
+     addPersonalDetails.setBounds(0,0,300,50);
+     addPersonalDetails.setForeground(Color.WHITE);
+     addPersonalDetails.setBackground(new Color(0,0,102));
+     addPersonalDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
+     addPersonalDetails.setMargin(new Insets(0,0,0,60));
+     addPersonalDetails.addActionListener(this);
+     p2.add( addPersonalDetails); 
      
      
      JButton updatePersonDetails = new JButton("Update Personal Details");
@@ -58,12 +60,13 @@ public class Dashboard extends JFrame implements ActionListener{
      p2.add( updatePersonDetails); 
        
      
-     JButton viewPersonDetails = new JButton("View Personal Details");
+     viewPersonDetails = new JButton("View Personal Details");
      viewPersonDetails.setBounds(0,100,300,50);
      viewPersonDetails.setForeground(Color.WHITE);
      viewPersonDetails.setBackground(new Color(0,0,102));
      viewPersonDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
      viewPersonDetails.setMargin(new Insets(0,0,0,60));
+     viewPersonDetails.addActionListener(this);
      p2.add( viewPersonDetails); 
      
      JButton deletePersonDetails = new JButton("Delete Personal Details");
@@ -188,6 +191,8 @@ public class Dashboard extends JFrame implements ActionListener{
     
     if(ae.getSource()== addPersonalDetails)
     { new AddCustomer(username);
+    }else if(ae.getSource()== viewPersonDetails)
+    { new ViewCustomer(username);
     }
     }
     
