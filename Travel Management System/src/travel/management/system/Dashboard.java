@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class Dashboard extends JFrame implements ActionListener{
     String username;
-    JButton addPersonalDetails,viewPersonDetails,updatePersonDetails,checkPakage,bookPakage,viewPakage,bookHotels,viewbookHotels,calculator,notepad;
+    JButton addPersonalDetails,viewPersonDetails,updatePersonDetails,checkPakage,bookPakage,viewPakage,bookHotels,viewbookHotels,calculator,notepad,about;
     Dashboard(String username)
     {this.username =username;
     
@@ -160,12 +160,13 @@ public class Dashboard extends JFrame implements ActionListener{
      notepad.addActionListener(this);
      p2.add( notepad);
      
-     JButton about = new JButton("About");
+      about = new JButton("About");
      about.setBounds(0,650,300,50);
      about.setForeground(Color.WHITE);
      about.setBackground(new Color(0,0,102));
      about.setFont(new Font("Tahoma", Font.PLAIN, 20));
      about.setMargin(new Insets(0,0,0,130));
+     about.addActionListener(this);
      p2.add( about);
      
      
@@ -224,6 +225,9 @@ public class Dashboard extends JFrame implements ActionListener{
         Runtime.getRuntime().exec("notepad.exe");
     }catch(Exception e)
     {e.printStackTrace();}
+    }
+     else if(ae.getSource()==  about)
+    { new  About();
     }
     }
     
