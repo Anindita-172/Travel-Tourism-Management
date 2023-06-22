@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class Dashboard extends JFrame implements ActionListener{
     String username;
-    JButton addPersonalDetails,viewPersonDetails,updatePersonDetails,checkPakage,bookPakage;
+    JButton addPersonalDetails,viewPersonDetails,updatePersonDetails,checkPakage,bookPakage,viewPakage,bookHotels;
     Dashboard(String username)
     {this.username =username;
     
@@ -94,7 +94,7 @@ public class Dashboard extends JFrame implements ActionListener{
      bookPakage.setMargin(new Insets(0,0,0,130));
      p2.add( bookPakage); 
      
-     JButton viewPakage = new JButton("View Pakage");
+     viewPakage = new JButton("View Pakage");
      viewPakage.setBounds(0,300,300,50);
      viewPakage.setForeground(Color.WHITE);
      viewPakage.setBackground(new Color(0,0,102));
@@ -111,7 +111,7 @@ public class Dashboard extends JFrame implements ActionListener{
      p2.add( viewHotels);
      
      
-     JButton bookHotels = new JButton("Book Hotels");
+     bookHotels = new JButton("Book Hotels");
      bookHotels.setBounds(0,400,300,50);
      bookHotels.setForeground(Color.WHITE);
      bookHotels.setBackground(new Color(0,0,102));
@@ -203,6 +203,12 @@ public class Dashboard extends JFrame implements ActionListener{
     }
     else if(ae.getSource()==  bookPakage)
     { new  BookPackage(username);
+    }
+    else if(ae.getSource()==  viewPakage)
+    { new  ViewPackage(username);
+    }
+    else if(ae.getSource()==  bookHotels)
+    { new  BookHotels(username);
     }
     }
     
