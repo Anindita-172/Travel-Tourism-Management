@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class Dashboard extends JFrame implements ActionListener{
     String username;
-    JButton addPersonalDetails,viewPersonDetails,updatePersonDetails,checkPakage,bookPakage,viewPakage,bookHotels;
+    JButton addPersonalDetails,viewPersonDetails,updatePersonDetails,checkPakage,bookPakage,viewPakage,bookHotels,viewbookHotels;
     Dashboard(String username)
     {this.username =username;
     
@@ -57,6 +57,7 @@ public class Dashboard extends JFrame implements ActionListener{
      updatePersonDetails.setBackground(new Color(0,0,102));
      updatePersonDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
      updatePersonDetails.setMargin(new Insets(0,0,0,60));
+     updatePersonDetails.addActionListener(this);
      p2.add( updatePersonDetails); 
        
      
@@ -92,6 +93,7 @@ public class Dashboard extends JFrame implements ActionListener{
      bookPakage.setBackground(new Color(0,0,102));
      bookPakage.setFont(new Font("Tahoma", Font.PLAIN, 20));
      bookPakage.setMargin(new Insets(0,0,0,130));
+     bookPakage.addActionListener(this);
      p2.add( bookPakage); 
      
      viewPakage = new JButton("View Pakage");
@@ -100,6 +102,7 @@ public class Dashboard extends JFrame implements ActionListener{
      viewPakage.setBackground(new Color(0,0,102));
      viewPakage.setFont(new Font("Tahoma", Font.PLAIN, 20));
      viewPakage.setMargin(new Insets(0,0,0,130));
+     viewPakage.addActionListener(this);
      p2.add( viewPakage);
      
      JButton viewHotels = new JButton("View Hotels");
@@ -117,14 +120,16 @@ public class Dashboard extends JFrame implements ActionListener{
      bookHotels.setBackground(new Color(0,0,102));
      bookHotels.setFont(new Font("Tahoma", Font.PLAIN, 20));
      bookHotels.setMargin(new Insets(0,0,0,130));
+     bookHotels.addActionListener(this);
      p2.add( bookHotels);
      
-     JButton viewbookHotels = new JButton("View Booked Hotels");
+     viewbookHotels = new JButton("View Booked Hotels");
      viewbookHotels.setBounds(0,450,300,50);
      viewbookHotels.setForeground(Color.WHITE);
      viewbookHotels.setBackground(new Color(0,0,102));
      viewbookHotels.setFont(new Font("Tahoma", Font.PLAIN, 20));
      viewbookHotels.setMargin(new Insets(0,0,0,60));
+     viewbookHotels.addActionListener(this);
      p2.add( viewbookHotels);
      
      
@@ -209,6 +214,9 @@ public class Dashboard extends JFrame implements ActionListener{
     }
     else if(ae.getSource()==  bookHotels)
     { new  BookHotels(username);
+    }
+    else if(ae.getSource()==  viewbookHotels)
+    { new  ViewBookedHotel(username);
     }
     }
     
