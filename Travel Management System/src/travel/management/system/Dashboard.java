@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class Dashboard extends JFrame implements ActionListener{
     String username;
-    JButton addPersonalDetails,viewPersonDetails,updatePersonDetails,checkPakage,bookPakage,viewPakage,bookHotels,viewbookHotels;
+    JButton addPersonalDetails,viewPersonDetails,updatePersonDetails,checkPakage,bookPakage,viewPakage,bookHotels,viewbookHotels,calculator,notepad;
     Dashboard(String username)
     {this.username =username;
     
@@ -141,28 +141,23 @@ public class Dashboard extends JFrame implements ActionListener{
      destinations.setMargin(new Insets(0,0,0,130));
      p2.add( destinations);
      
-     JButton payments = new JButton("Payments");
-     payments.setBounds(0,550,300,50);
-     payments.setForeground(Color.WHITE);
-     payments.setBackground(new Color(0,0,102));
-     payments.setFont(new Font("Tahoma", Font.PLAIN, 20));
-     payments.setMargin(new Insets(0,0,0,130));
-     p2.add( payments);
-     
-     JButton calculator = new JButton("Calculator");
-     calculator.setBounds(0,600,300,50);
+        
+     calculator = new JButton("Calculator");
+     calculator.setBounds(0,550,300,50);
      calculator.setForeground(Color.WHITE);
      calculator.setBackground(new Color(0,0,102));
      calculator.setFont(new Font("Tahoma", Font.PLAIN, 20));
      calculator.setMargin(new Insets(0,0,0,130));
+     calculator.addActionListener(this);
      p2.add( calculator);
      
-     JButton notepad = new JButton("Notepad");
+     notepad = new JButton("Notepad");
      notepad.setBounds(0,600,300,50);
      notepad.setForeground(Color.WHITE);
      notepad.setBackground(new Color(0,0,102));
      notepad.setFont(new Font("Tahoma", Font.PLAIN, 20));
      notepad.setMargin(new Insets(0,0,0,130));
+     notepad.addActionListener(this);
      p2.add( notepad);
      
      JButton about = new JButton("About");
@@ -217,6 +212,18 @@ public class Dashboard extends JFrame implements ActionListener{
     }
     else if(ae.getSource()==  viewbookHotels)
     { new  ViewBookedHotel(username);
+    }
+    else if(ae.getSource()==  calculator)
+    { try{
+        Runtime.getRuntime().exec("calc.exe");
+    }catch(Exception e)
+    {e.printStackTrace();}
+    }
+    else if(ae.getSource()==  notepad)
+    { try{
+        Runtime.getRuntime().exec("notepad.exe");
+    }catch(Exception e)
+    {e.printStackTrace();}
     }
     }
     
