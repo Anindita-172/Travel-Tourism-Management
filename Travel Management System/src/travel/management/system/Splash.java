@@ -2,8 +2,10 @@ package travel.management.system;
 
 import javax.swing.*;
 import java.awt.*;
-public class Splash extends JFrame implements Runnable{
-    Thread thread;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+public class Splash extends JFrame implements ActionListener{
+    
     Splash()
     {
       setSize(1200,600);
@@ -17,28 +19,23 @@ public class Splash extends JFrame implements Runnable{
        add(image);
        
       setVisible(true);
-      thread = new Thread(this);
-      thread.start(); //call the run function in multithreaded way
+      //for putting up a button
+      JButton clickhere = new JButton("CLICK HERE TO CONTINUE");
+      clickhere.setBounds(400, 400, 300, 70);
+      clickhere.setBackground(Color.LIGHT_GRAY);
+      clickhere.setForeground(Color.BLACK);
+      clickhere.addActionListener(this);
+      image.add(clickhere);
     }
-    public void run() // this function will close the tab in 7 seconds
-    {
-      try{
-            Thread.sleep(7000);
-            //Login l = new Login();
+    public void actionPerformed(ActionEvent ae){
+    
         setVisible(false);
-        }catch(Exception e){
-           
+        new Login();
     }
-    }
+    
      public static void main(String[] args){
       Splash frame = new Splash();
-      int x=1;
-        for(int i=2; i<=600; i+=10, x+=7){
-           frame.setLocation(900 - ((i+x)/2), 500 - (i/2));
-           frame.setSize(x+i,i);
-             try{
-                Thread.sleep(10);
-            }catch(Exception e){}
-        }
+     
+        
     }
 }
