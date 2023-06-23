@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class Dashboard extends JFrame implements ActionListener{
     String username;
-    JButton addPersonalDetails,viewPersonDetails,updatePersonDetails,checkPakage,bookPakage,viewPakage,bookHotels,viewbookHotels,calculator,notepad,about;
+    JButton addPersonalDetails,viewPersonDetails,updatePersonDetails,checkPakage,viewHotels,bookPakage,destinations,viewPakage,bookHotels,viewbookHotels,calculator,deletePersonDetails,notepad,about;
     Dashboard(String username)
     {this.username =username;
     
@@ -70,12 +70,13 @@ public class Dashboard extends JFrame implements ActionListener{
      viewPersonDetails.addActionListener(this);
      p2.add( viewPersonDetails); 
      
-     JButton deletePersonDetails = new JButton("Delete Personal Details");
+     deletePersonDetails = new JButton("Delete Personal Details");
      deletePersonDetails.setBounds(0,150,300,50);
      deletePersonDetails.setForeground(Color.WHITE);
      deletePersonDetails.setBackground(new Color(0,0,102));
      deletePersonDetails.setFont(new Font("Tahoma", Font.PLAIN, 20));
      deletePersonDetails.setMargin(new Insets(0,0,0,60));
+     deletePersonDetails.addActionListener(this);
      p2.add( deletePersonDetails); 
      
      checkPakage = new JButton("Check Pakage");
@@ -105,7 +106,7 @@ public class Dashboard extends JFrame implements ActionListener{
      viewPakage.addActionListener(this);
      p2.add( viewPakage);
      
-     JButton viewHotels = new JButton("View Hotels");
+     viewHotels = new JButton("View Hotels");
      viewHotels.setBounds(0,350,300,50);
      viewHotels.setForeground(Color.WHITE);
      viewHotels.setBackground(new Color(0,0,102));
@@ -133,12 +134,13 @@ public class Dashboard extends JFrame implements ActionListener{
      p2.add( viewbookHotels);
      
      
-     JButton destinations = new JButton("Destinations");
+     destinations = new JButton("Destinations");
      destinations.setBounds(0,500,300,50);
      destinations.setForeground(Color.WHITE);
      destinations.setBackground(new Color(0,0,102));
      destinations.setFont(new Font("Tahoma", Font.PLAIN, 20));
      destinations.setMargin(new Insets(0,0,0,130));
+     destinations.addActionListener(this);
      p2.add( destinations);
      
         
@@ -228,6 +230,11 @@ public class Dashboard extends JFrame implements ActionListener{
     }
      else if(ae.getSource()==  about)
     { new  About();
+    }else if(ae.getSource()==  deletePersonDetails)
+    { new DeleteDetails(username);
+    }
+    else if(ae.getSource()==  destinations)
+    { new Destination();
     }
     }
     
